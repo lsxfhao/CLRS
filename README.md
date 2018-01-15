@@ -1,2 +1,3 @@
 # CLRS
-Exercises of CLRS
+Practices and exercises of CLRS.
+
