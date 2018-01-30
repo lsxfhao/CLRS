@@ -44,4 +44,53 @@ sequence each time. Write pseudocode, either iterative or recursive, for binary
 search. Argue that the worst-case running time of binary search is Θ(lgn).
 
 **Solution**:
+
+iterative search:
+```
+    BINARY-SEARCH(A, v):
+        p = 1
+        q = A.length
+        r = p + (q - p) / 2
+        while A[r] != v and p < q:
+            if A[r] > v:
+                q = r - 1
+                r = p + (q - p) / 2
+            else if A[r] < v:
+                p = r + 1
+                r = p + (q - p) / 2
+        if A[r] == v:
+            return r
+        else
+            return null
+```
+
+recursive search:
+```
+    BINARY-SEARCH(A, p, q, v):
+        if p < q:
+            r = (p + q) / 2
+            if A[r] > v:
+                return BINARY-SEARCH(A, p, r-1, v)
+            else if A[r] < v:
+                return BINARY-SEARCH(A, r+1, q, v)
+            else:
+                return r
+        else if p == q and A[p] == v:
+            return p
+        return null
+```
+
+Implementation Code See `binary_search.py`
+
+# 2.3-6
+Observe that the while loop of lines 5–7 of the INSERTION-SORT procedure in
+Section 2.1 uses a linear search to scan (backward) through the sorted subarray
+A[1..j-1]. Can we use a binary search (see Exercise 2.3-5) instead to improve
+the overall worst-case running time of insertion sort to Θ(nlgn)?
+
+**Solution**:
+
+No. Although the comparison procedure can be improved, it still need to move all the greater elements to its proper position. This is still Θ(n).
+
+# 2.3-7
 //TODO
